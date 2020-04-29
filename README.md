@@ -19,15 +19,7 @@ Production Site - https://react-beer-library.herokuapp.com/
 
 
 ## Deployment Methods
-This is setup for continuous deployment via Heroku
-
-
-## Prerequisites
-What things you need to install the software and how to install them
-
-
-## Installing
-A step by step series of examples that tell you how to get a development environment running
+This application is setup for continuous deployment via Heroku
 
 
 ## Author

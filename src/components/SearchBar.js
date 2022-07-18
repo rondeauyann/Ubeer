@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 class SearchBar extends Component {
 
-    state = { term: '' };
+    state = { brewerie: '' };
 
     handleInputChange = event => {
         this.setState({ term: event.target.value })
@@ -10,7 +10,7 @@ class SearchBar extends Component {
 
     onBeerSubmit = event => {
         event.preventDefault();
-        this.props.onBeerSubmit(this.state.term);
+        this.props.onBeerSubmit(this.state.brewerie);
     };
 
     render() {

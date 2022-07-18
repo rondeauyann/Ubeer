@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/alt-text */
 import React, { Component } from 'react';
 import brewery from '../api/api';
 
@@ -7,7 +8,10 @@ import Pagination from './Pagination';
 import BeerList from './BeerList';
 import '../css/Main.css';
 
+import ubeer from './../images/ubeer.png';
+
 import { BrowserRouter as Router, Route } from 'react-router-dom';
+import Brewery from './Brewery';
 
 
 class App extends Component {
@@ -23,10 +27,9 @@ class App extends Component {
  
     componentDidMount = async () => {
         
-        const response      = await brewery.get('/beers');
-
+        const response      = await brewery.get('/bieres/1');
         this.setState({
-            beers: response.data.data,
+            beers: response.data,
             currentPage: response.data.currentPage,
             numberOfPages: response.data.numberOfPages,
             totalResults: response.data.totalResults,
@@ -36,31 +39,24 @@ class App extends Component {
     
 
     getAllBeers = async () => {
-
-        const response = await brewery.get('/beers');
+        const response = await brewery.get('/bieres');
 
         this.setState({
-            beers: response.data.data,
+            beers: response.data,
             currentPage: response.data.currentPage,
             numberOfPages: response.data.numberOfPages,
             totalResults: response.data.totalResults
-        }); 
-        
+        });
     };
 
 
-    handleTermSubmit = async term => {
+    handleTermSubmit = async () => {
         
-        const response = await brewery.get('/search', {
-            params: {
-                q: term
-            }
-        });
+        const response = await brewery.get('/brasseries');
+        console.log(response.data);
 
         this.setState({
-            beers: response.data.data,
-            numberOfPages: response.data.numberOfPages,
-            totalResults: response.data.totalResults
+            brewery: response.data,
         }); 
 
     };
@@ -68,7 +64,7 @@ class App extends Component {
     
     handlePagination = async currentPage => {
 
-        const response = await brewery.get('/beers', {
+        const response = await brewery.get('/bieres', {
             params: {
                 p: currentPage
             }
@@ -94,15 +90,17 @@ class App extends Component {
                         <div className="site-content">
                         
                             <Route path="/" exact>
+                                <img className='ubeerImg' src={ubeer} />
 
-                                <SearchBar onBeerSubmit={this.handleTermSubmit} totalResults={this.state.totalResults} />
+                                <SearchBar onBeerSubmit={this.handleTermSubmit} />
 
                                 <SearchNav 
                                     onBeerSubmit={this.handleTermSubmit} 
                                     currentPage={this.state.currentPage}
                                     getAllBeers={this.getAllBeers}
                                 />
-                                
+                                <Brewery brewery={this.state.brewery} />
+
                                 <BeerList beers={this.state.beers} />
 
                                 <Pagination

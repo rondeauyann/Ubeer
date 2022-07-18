@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 class Pagination extends Component {
     
-    state = { 
+    state = {
         currentPage: this.props.currentPage,
         numberOfPages: this.props.numberOfPages
     };
@@ -16,7 +16,7 @@ class Pagination extends Component {
         event.preventDefault();
         this.scrollToTop()
         this.props.onPageSubmit(this.state.currentPage - 1);
-        this.setState({ currentPage: this.state.currentPage - 1 });  
+        this.setState({ currentPage: this.state.currentPage - 1 });
     };
     
     onNextPage = event => {

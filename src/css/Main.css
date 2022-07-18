@@ -288,3 +288,8 @@ tbody tr:nth-child(even) {
   border-color: #6c757d;
   opacity: 0.8;
 }
+
+.ubeerImg {
+  width: 200px;
+  margin-bottom: 40px;
+}

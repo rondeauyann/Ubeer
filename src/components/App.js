@@ -51,8 +51,13 @@ class App extends Component {
         });
     };
 
-    getBrewery = async () => {
-        const response = await brewery.get('/brasseries');
+    getBrewery = async term => {
+        const response = await brewery.get('/brasseries/', {
+            params: {
+                q: term
+            }
+        });
+        
         console.log(response.data);
         
         this.setState({
@@ -65,9 +70,13 @@ class App extends Component {
     };
 
 
-    handleTermSubmit = async () => {
+    handleTermSubmit = async term => {
         
-        const response = await brewery.get('/brasseries');
+        const response = await brewery.get('/brasseries', {
+            params: {
+                q: term
+            }
+        });
         const beers = await brewery.get('/bieres');
         const carte = await brewery.get('/cartes');
 
@@ -129,13 +138,13 @@ class App extends Component {
                             <Route path="/" exact>
                                 <img className='ubeerImg' src={ubeer} />
 
-                                <SearchBar onBeerSubmit={this.handleTermSubmit} getBrewery={this.getBrewery}
- />
+                                <SearchBar onBeerSubmit={this.handleTermSubmit} />
 
                                 <SearchNav 
                                     onBeerSubmit={this.handleTermSubmit} 
                                     currentPage={this.state.currentPage}
                                     getAllBeers={this.getAllBeers}
+                                    getBrewery={this.getBrewery}
                                 />
                                 <Brewery brewery={this.state.brewery} />
 

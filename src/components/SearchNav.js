@@ -17,7 +17,7 @@ class SearchNav extends Component {
 
     render() {
 
-        const beerTypes = ['La licorne dorée', 'Brewerie2', 'Brewerie3', 'Brewerie4'];
+        const beerTypes = [1, 2, 3];
 
         const beerTypesList = beerTypes.map((beerType, index) =>
             <li className="list-group-item" key={index}>

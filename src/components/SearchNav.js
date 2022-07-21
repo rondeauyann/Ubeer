@@ -17,7 +17,7 @@ class SearchNav extends Component {
 
     render() {
 
-        const beerTypes = ['Brewerie1', 'Brewerie2', 'Brewerie3', 'Brewerie4'];
+        const beerTypes = ['La licorne dorée', 'Brewerie2', 'Brewerie3', 'Brewerie4'];
 
         const beerTypesList = beerTypes.map((beerType, index) =>
             <li className="list-group-item" key={index}>
@@ -29,7 +29,7 @@ class SearchNav extends Component {
 
             <div className="search-nav mb-2">
                 <ul className="nav">
-                    <li className="list-group-item"><button onClick={() => this.props.getAllBeers()}>All Beers</button></li>
+                    <li className="list-group-item"><button onClick={() => this.props.getBrewery()}>All Beers</button></li>
                     {beerTypesList}
                 </ul>
             </div>

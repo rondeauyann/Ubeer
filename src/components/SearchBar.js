@@ -10,7 +10,7 @@ class SearchBar extends Component {
 
     onBeerSubmit = event => {
         event.preventDefault();
-        this.props.onBeerSubmit(this.state.brewerie);
+        this.props.onBeerSubmit(this.state.beers);
     };
 
     render() {

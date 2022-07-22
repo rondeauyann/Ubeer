@@ -29,9 +29,6 @@
   "routes": {
     "/**": "index.html"
   },
-  "engines": {
-    "node": "11.15.0"
-  },
   "eslintConfig": {
     "extends": "react-app"
   },
